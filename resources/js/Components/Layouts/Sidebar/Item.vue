@@ -13,11 +13,14 @@ defineProps({
     required: true,
   },
 });
+
+
 </script>
 <template>
   <li>
     <a class="nav-link" :href="to">
-      <i :class="icon"></i> <span>{{ text }}</span>
+      <i :class="icon" v-show="icon"></i>
+      <span>{{ text }}</span>
     </a>
   </li>
 </template>

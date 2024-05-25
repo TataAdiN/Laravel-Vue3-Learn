@@ -9,10 +9,11 @@
         <link rel="stylesheet" href="{{ url('css/style.css') }}">
         <link rel="stylesheet" href="{{ url('css/components.css') }}">
         @vite('resources/css/app.css')
+        @inertiaHead
     </head>
     <body>
         <div class="main-wrapper main-wrapper-1">
-            <div id="app"></div>
+        @inertia
         </div>
         @vite('resources/js/app.js')
 

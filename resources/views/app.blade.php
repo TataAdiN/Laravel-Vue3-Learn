@@ -16,7 +16,6 @@
         @inertia
         </div>
         @vite('resources/js/app.js')
-
         <script src="{{ url('modules/jquery.min.js') }}"></script>
         <script src="{{ url('modules/popper.js') }}"></script>
         <script src="{{ url('modules/tooltip.js') }}"></script>
@@ -24,6 +23,5 @@
         <script src="{{ url('modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
         <script src="{{ url('modules/moment.min.js') }}"></script>
         <script src="{{ url('js/stisla.js') }}"></script>
-        <script src="{{ url('js/scripts.js') }}"></script>
     </body>
 </html>

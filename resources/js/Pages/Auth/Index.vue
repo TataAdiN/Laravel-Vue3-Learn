@@ -3,6 +3,7 @@ import RememberMe from './RememberMe.vue'
 import Button from "@/Components/Button.vue";
 import LoginSocial from './LoginSocial.vue';
 import Password from '../../Components/Form/Password.vue';
+import TextField from "@/Components/Form/TextField.vue";
 </script>
 
 <template>
@@ -19,14 +20,7 @@ import Password from '../../Components/Form/Password.vue';
 						</div>
 						<div class="card-body">
 							<form method="POST" action="#" class="needs-validation">
-								<div class="form-group">
-									<label for="email">Email</label>
-									<input id="email" type="email" class="form-control" name="email" tabindex="1"
-										required autofocus>
-									<div class="invalid-feedback">
-										Please fill in your email
-									</div>
-								</div>
+                                <TextField :title="'Email'" :type="'email'"/>
 								<Password :title="'Password'" :showForgot="true"/>
 								<RememberMe />
 								<div class="form-group">

@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{ url('modules/fontawesome/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ url('css/style.css') }}">
         <link rel="stylesheet" href="{{ url('css/components.css') }}">
+        <link rel="shortcut icon" href="{{ url('img/stisla-fill.svg') }}"/>
         @vite('resources/css/app.css')
         @inertiaHead
     </head>

@@ -1,19 +1,31 @@
 <script setup>
 defineProps({
+    name : {
+        type: String,
+        default: '',
+    },
     title: {
         type: String,
-        default: "",
+        default: '',
     },
     type: {
+        type: String,
+        type: String,
+        type: String,
         type: String,
         default: false,
     }
 });
 </script>
+
 <template>
     <div class="form-group">
-        <label for="email">{{ title }}</label>
-        <input id="email" type="type" class="form-control" name="email" required autofocus>
+        <label :for="name">
+            {{ title }}
+        </label>
+        <input type="type" class="form-control"
+            :id="name"
+            :name="name" required autofocus>
         <div class="invalid-feedback">
             Please fill in your {{ title }}
         </div>

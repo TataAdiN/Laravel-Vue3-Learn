@@ -1,5 +1,12 @@
 <script setup>
+import { ref } from 'vue';
+
 defineProps({
+    modelValue: String,
+    name : {
+        type: String,
+        default: '',
+    },
     title: {
         type: String,
         default: "",
@@ -7,22 +14,42 @@ defineProps({
     showForgot: {
         type: Boolean,
         default: false,
+    },
+    hasError:{
+        type: Boolean,
+        default: false,
     }
 });
+
+defineEmits(['update:modelValue']);
+
+const input = ref(null);
+
 </script>
 <template>
     <div class="form-group">
         <div class="d-block">
-            <label for="password" class="control-label">{{ title }}</label>
+            <label :for="name" 
+                class="control-label">
+                {{ title }}
+            </label>
             <div class="float-right" v-show="showForgot">
                 <a href="auth-forgot-password.html" class="text-small">
                     Forgot Password?
                 </a>
             </div>
         </div>
-        <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-        <div class="invalid-feedback">
-            please fill in your {{ title }}
+        <input :id="name"
+            :name="name" 
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
+            ref="input"
+            type="password" 
+            class="form-control"
+            tabindex="2" 
+            required>
+        <div class="invalid-feedback" v-show="hasError">
+            Please fill with valid <b>{{ title }}</b>
         </div>
     </div>
 </template>

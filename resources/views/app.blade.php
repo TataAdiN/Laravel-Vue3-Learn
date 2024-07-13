@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{{ url('css/components.css') }}">
         <link rel="shortcut icon" href="{{ url('img/stisla-fill.svg') }}"/>
         @vite('resources/css/app.css')
+        @routes
         @inertiaHead
     </head>
     <body>

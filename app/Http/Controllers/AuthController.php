@@ -12,4 +12,10 @@ class AuthController extends Controller
     {
         return Inertia::render('Auth/Index', []);
     }
+
+    public function auth(Request $request)
+    {
+        $data = $request->validate(['email' => 'required|email', 'password' => 'required']);
+        dd($data);
+    }
 }

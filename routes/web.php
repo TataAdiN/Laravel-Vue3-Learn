@@ -18,3 +18,4 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/auth', [AuthController::class, 'index']);
+Route::post('/auth', [AuthController::class, 'auth'])->name('auth.validate');

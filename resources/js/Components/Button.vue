@@ -11,7 +11,7 @@ defineProps({
 });
 </script>
 <template>
-    <button type="submit" :class="`btn btn-${type} btn-lg btn-block`">
+    <button :class="`btn btn-${type} btn-lg btn-block`">
         {{ title }}
     </button>
 </template>

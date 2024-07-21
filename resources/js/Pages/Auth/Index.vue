@@ -4,8 +4,10 @@ import Password from '@/Components/Form/Password.vue';
 import TextField from "@/Components/Form/TextField.vue";
 import RememberMe from '@/Pages/Auth/RememberMe.vue'
 import LoginSocial from '@/Pages/Auth/LoginSocial.vue';
+import LoginResultModal from "@/Pages/Auth/LoginResultModal.vue";
+import { useModal } from '@/useModal.js';
 import { useForm } from '@inertiajs/vue3';
-import { reactive } from "vue";
+import { reactive, onMounted, onUnmounted } from "vue";
 
 const form = useForm({
 	email: '',
@@ -17,10 +19,48 @@ const form_state = reactive({
 	invalid_password: false,
 })
 
+const ui_state = reactive({
+	modalLoginResult: null,
+	modalLoginResultOpen: false,
+	errorMessage: '',
+})
+
+onMounted(() => {
+	ui_state.modalLoginResult = useModal('#modal_login_result');
+});
+
+onUnmounted(() => {
+	closeModal();
+});
+
+const openModal = (id) => {
+	switch (id) {
+		case 'result':
+			ui_state.modalLoginResult.show();
+			ui_state.modalLoginResultOpen = false;
+			break;
+		default:
+			break;
+	}
+};
+
+const closeModal = (id) => {
+	switch (id) {
+		case 'result':
+			ui_state.modalLoginResult.hide();
+			ui_state.modalLoginResultOpen = false;
+			break;
+		default:
+			break;
+	}
+};
+
+
 const auth = () => {
 	form.post(route('auth.validate'), {
 		preserveScroll: true,
 		onSuccess: (response) => {
+
 		},
 		onError: (errors) => {
 			if (errors.email) {
@@ -28,6 +68,10 @@ const auth = () => {
 			}
 			if (errors.password) {
 				form_state.invalid_password = true;
+			}
+			if (errors.auth) {
+				ui_state.errorMessage = errors.auth;
+				openModal('result');
 			}
 		},
 		onFinish: () => null,
@@ -38,6 +82,10 @@ const auth = () => {
 </script>
 
 <template>
+	<LoginResultModal :show="ui_state.modalLoginResultOpen" 
+		:message="ui_state.errorMessage"
+		@close="closeModal('result')" />
+
 	<section class="section">
 		<div class="container mt-5">
 			<div class="row">

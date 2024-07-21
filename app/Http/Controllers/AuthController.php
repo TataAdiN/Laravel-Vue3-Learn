@@ -16,6 +16,8 @@ class AuthController extends Controller
     public function auth(Request $request)
     {
         $data = $request->validate(['email' => 'required|email', 'password' => 'required']);
-        dd($data);
+        return back()->withErrors(
+            ['auth' => 'Wrong Username or Password, Please try again!']
+        );
     }
 }
